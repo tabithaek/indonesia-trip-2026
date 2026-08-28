@@ -99,74 +99,151 @@ input,textarea,select{background:#FFFDF9!important;color:#2F2724!important;borde
 .buy-list-wrap{padding:4px 0 20px}.buy-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 18px}.buy-toolbar input{flex:1;min-width:220px;padding:12px 14px;border-radius:14px}.buy-toolbar button{padding:12px 16px;border-radius:14px;border:none;background:#4A3831;color:#FFFDF9!important;font-weight:700;cursor:pointer}.buy-toolbar button.secondary{background:#C7A27C;color:#3F2F2A!important}.buy-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.buy-stat{background:#F0E7DD;border:1px solid #D6C8BE;border-radius:14px;padding:8px 12px;color:#5B4942!important;font-weight:700}.buy-items{display:grid;gap:10px}.buy-item{display:flex;align-items:center;gap:12px;background:#FFFDF9;border:1px solid #D6C8BE;border-radius:16px;padding:12px 14px}.buy-item.done{opacity:.58;text-decoration:line-through;background:#F1ECE6}.buy-item input[type="checkbox"]{width:20px;height:20px;accent-color:#A84F3D;flex:none}.buy-item .buy-text{flex:1;outline:none;min-height:24px;color:#2F2724!important}.buy-item .buy-delete{background:#F3D8D4;color:#843C33!important;border:none;border-radius:10px;padding:7px 10px;cursor:pointer}.buy-empty{padding:28px;text-align:center;background:#F8F1E7;border:1px dashed #C7A27C;border-radius:16px;color:#6F625D!important}
 
 
-/* V11 contrast emergency fix — cards inside the dark hero must NEVER inherit white text */
+/* V12 CLEAN PALETTE — one coherent color system, no rainbow/overlapping gradients */
+:root{
+  --bg:#EEE8E1;
+  --paper:#FFFDFC;
+  --paper2:#F8F3ED;
+  --ink:#302724;
+  --muted:#6F625C;
+  --brown:#5A463C;
+  --brown2:#745D50;
+  --terracotta:#B86B58;
+  --sage:#73836D;
+  --line:#D8CDC3;
+  --accent:#B86B58;
+}
+body{
+  background:#EEE8E1!important;
+  color:#302724!important;
+}
+header{
+  background:#FFFDFC!important;
+  color:#302724!important;
+  border-bottom:1px solid #D8CDC3!important;
+}
+header *, header .sub{color:#302724!important}
+nav{
+  background:#EEE8E1!important;
+}
+.tab,nav button{
+  background:#FFFDFC!important;
+  color:#5A463C!important;
+  border:1px solid #D8CDC3!important;
+  box-shadow:none!important;
+}
+.tab.active,nav button.active{
+  background:#5A463C!important;
+  color:#FFFDFC!important;
+  border-color:#5A463C!important;
+}
+.tab.active *,nav button.active *{color:#FFFDFC!important}
+
+/* Main hero: dark, but ONLY its direct heading/subtitle are light */
+.hero{
+  background:#5A463C!important;
+  color:#FFFDFC!important;
+  border:1px solid #745D50!important;
+  box-shadow:none!important;
+}
+.hero > h1,
+.hero > p{
+  color:#FFFDFC!important;
+}
+
+/* Dashboard cards inside the hero */
 .hero .stat,
 .hero .command-card,
 .hero .planning-card,
 .hero .card{
-  background:#FFFDF9!important;
-  color:#2F2724!important;
-  border:1px solid #D6C8BE!important;
+  background:#FFFDFC!important;
+  color:#302724!important;
+  border:1px solid #D8CDC3!important;
+  box-shadow:none!important;
 }
-
-.hero .stat *,
-.hero .command-card *,
-.hero .planning-card *,
-.hero .card *{
-  color:#2F2724!important;
-}
-
 .hero .stat b,
 .hero .command-card b,
 .hero .planning-card b,
 .hero .card b{
-  color:#3F2F2A!important;
+  color:#5A463C!important;
 }
-
 .hero .stat span,
 .hero .command-card span,
 .hero .planning-card span,
-.hero .card span,
-.hero .command-card .tiny,
-.hero .planning-card .tiny{
-  color:#6F625D!important;
+.hero .card span{
+  color:#6F625C!important;
 }
 
-/* Keep only the actual hero title/subtitle light */
-.hero > h1,
-.hero > p{
-  color:#FFFDF9!important;
+/* All normal cards: plain paper, strong readable text */
+.card,.panel,.section,.day,.item,.planning-card,.command-card,.note,
+.pack-card,.buy-list-wrap,.buy-item{
+  background:#FFFDFC!important;
+  color:#302724!important;
+  border-color:#D8CDC3!important;
+}
+h1,h2,h3,h4,strong,b{color:#5A463C!important}
+p,li,span,small,.muted{color:#6F625C!important}
+
+/* Do not let generic text rules override the hero title */
+.hero > h1,.hero > h1 *,
+.hero > p,.hero > p *{
+  color:#FFFDFC!important;
 }
 
-/* Buttons inside hero remain readable */
-.hero button{
-  background:#FFF8EA!important;
-  color:#4A3831!important;
-  border:1px solid #D6C8BE!important;
-}
-.hero button *{color:#4A3831!important}
+/* Single-color accents instead of competing gradients */
+.progress{background:#E4D9D0!important}
+.progress .bar{background:#B86B58!important}
+.tag{background:#F3E3DD!important;color:#744536!important;border:1px solid #E3C8BE!important}
+.datebox{background:#EEE4DC!important;color:#5A463C!important}
+.item.race-item{background:#FFF8F5!important;border-left-color:#B86B58!important}
+.note{background:#FAF5EF!important;border-left:4px solid #B86B58!important}
 
-/* Strong contrast for all text-heavy sections */
-.day h1,.day h2,.day h3,.day h4,
-.panel h1,.panel h2,.panel h3,.panel h4,
-.command-card h1,.command-card h2,.command-card h3,.command-card h4,
-.pack-card h1,.pack-card h2,.pack-card h3,.pack-card h4{
-  color:#3F2F2A!important;
+/* Stock tab */
+.stock-hero{
+  background:#5A463C!important;
+  border-radius:24px;
+  padding:24px;
+  margin-bottom:18px;
+  border:1px solid #745D50!important;
 }
-
-.day p,.day span,.day .detail,.day .small,
-.panel p,.panel span,.panel .detail,.panel .small,
-.command-card p,.command-card span,.command-card .tiny,
-.pack-card p,.pack-card span{
-  color:#6F625D!important;
+.stock-hero h1{margin:0 0 6px;color:#FFFDFC!important;font-family:Georgia,serif}
+.stock-hero p{margin:0;color:#F1E9E3!important}
+.buy-list-wrap{
+  border:1px solid #D8CDC3!important;
+  border-radius:22px;
+  padding:18px;
 }
+.buy-toolbar input{
+  background:#FFFDFC!important;
+  color:#302724!important;
+  border:1px solid #CDBEB3!important;
+}
+.buy-toolbar button,#buyAdd{
+  background:#5A463C!important;
+  color:#FFFDFC!important;
+  border:1px solid #5A463C!important;
+}
+#buyClearDone,.secondary{
+  background:#F3E3DD!important;
+  color:#744536!important;
+  border:1px solid #E3C8BE!important;
+}
+.buy-stat{
+  background:#F8F3ED!important;
+  color:#5A463C!important;
+  border:1px solid #D8CDC3!important;
+}
+.buy-item{
+  border:1px solid #D8CDC3!important;
+}
+.buy-item input{accent-color:#B86B58!important}
+.buy-item.done{background:#F4F1EC!important}
+.buy-item.done .buy-name{color:#8A817B!important}
 
-/* Completed items still readable */
-.item.done,
-.item.done *,
-.pack-item.done,
-.pack-item.done *{
-  color:#657367!important;
+/* Mobile tabs stay usable */
+@media(max-width:700px){
+  nav{overflow-x:auto;flex-wrap:nowrap;padding-bottom:12px}
+  .tab{white-space:nowrap}
 }
 
 </style>
@@ -178,6 +255,7 @@ input,textarea,select{background:#FFFDF9!important;color:#2F2724!important;borde
 <button class="tab" data-tab="budget">💰 Budget</button>
 <button class="tab" data-tab="todo">✅ To-do</button>
 <button class="tab" data-tab="pack">🎒 Pack</button>
+<button class="tab" data-tab="stock">🛍️ Indonesia Stock</button>
 </nav>
 <main>
 <div id="trip" class="panel active">
@@ -475,14 +553,16 @@ input,textarea,select{background:#FFFDF9!important;color:#2F2724!important;borde
 </div>
 </div>
 
-<section id="buy" class="tab-content" style="display:none">
+<div id="stock" class="panel">
+<section class="stock-hero"><h1>🛍️ Indonesia Stock</h1><p>Your personal restock list for things you want to bring back from Indonesia to Japan. Add everything yourself, edit anytime, and tick it once bought ✨</p></section>
 <div class="section"><h2>🛍️ Indonesia Stock List</h2>
 <p class="muted">Your personal restock list for things to bring back from Indonesia to Japan. Add whatever you want yourself hahaha ✨</p>
 <div class="buy-list-wrap"><div class="buy-toolbar"><input id="buyInput" type="text" placeholder="Add something to buy in Indonesia…" autocomplete="off"><button id="buyAdd">＋ Add item</button><button id="buyClearDone" class="secondary">Clear checked</button></div>
 <div class="buy-stats"><div class="buy-stat" id="buyTotal">0 items</div><div class="buy-stat" id="buyDone">0 bought</div><div class="buy-stat" id="buyLeft">0 remaining</div></div>
-<div id="buyItems" class="buy-items"></div></div></div></section>
+<div id="buyItems" class="buy-items"></div></div></div>
+</div>
 </main>
-<footer>Made as a living itinerary · 🍵 Matcha Latte edition · Tick an activity when it's done. Your checkmarks are saved locally in this browser. TBD items can be filled in later.</footer>
+<footer>Made as a living itinerary · Warm Mocha & Terracotta edition · Tick an activity when it's done. Your checkmarks are saved locally in this browser. TBD items can be filled in later.</footer>
 
 <script>
 const TASKS = {"2026-10-20": [["11:00", "Leave home", "✈️ Travel", "Recommended: leave around 11:00 so you have a comfortable buffer for the Machida → Haneda bus."], ["11:30–12:00", "Machida → Haneda bus", "🚌 Transport", "Target bus window; exact service to confirm."], ["13:00", "Arrive HND T3", "✈️ Airport", "Aim for ~3 hours before departure."], ["13:15–15:00", "TIAT Lounge", "☕ Lounge", "Use your lounge voucher; eat, hydrate and relax before boarding."], ["15:15", "Head to gate", "✈️ Flight prep", "Passport, boarding pass, final restroom/water."], ["16:00", "HND → PEK · CA134", "✈️ Flight", "Arrive 19:00 PEK T3."]], "2026-10-21": [["AM", "Easy Beijing run", "🏃 Running", "Optional 20–30 min very easy run near the transit hotel only if safe, accessible and you feel fresh. No hard workout."], ["AM–PM", "Beijing sightseeing", "🏯 Explore", "Best limited-time route: Tian'anmen area → Forbidden City (if ticket/entry works) → Jingshan viewpoint → Wangfujing. Keep it moderate."], ["PM", "Chinese food + shopping", "🍜 Food", "Try roast duck, dumplings/noodle dishes, jianbing or tanghulu; avoid dishes heavy in vegetables if you dislike them."], ["PM", "Buy something China-specific", "🛍️ Shopping", "Good targets: tea, Chinese stationery, small cloisonné/enamel craft, palace-themed souvenirs, traditional snacks."], ["16:00", "Return toward PEK", "🚕 Transport", "Leave a generous buffer for immigration/security; hotel → airport is your personal transport cost."], ["17:50", "PEK → CGK · CA977", "✈️ Flight", "Arrive CGK 00:15 Oct 22."]], "2026-10-22": [["00:15", "Arrive CGK", "🛬 Travel", "International arrival at Terminal 3."], ["00:30–01:30", "CBC Tangerang pickup", "🚐 Transport", "Contact property in advance for free airport pickup. Confirm the post-midnight check-in is covered."], ["01:30", "CBC Tangerang", "🏨 Stay", "Rp156,000; confirmed."], ["AM–PM", "Pampering block", "💆🏻‍♀️ Self-care", "Flexible with Oct 23: hair + creambath + facial + nails + lashes."], ["PM", "Light relaxation massage", "💆🏻‍♀️ Race prep", "Choose light/relaxing, not deep tissue or aggressive leg work, this close to JRF."], ["EVENING", "Meet friends", "👯‍♀️ Social", "Keep the evening enjoyable but don't turn it into a late night."]], "2026-10-23": [["09:00–13:00", "Solo café / brunch exploration", "☕ Explore", "Breakfast Club, Kurasu, Mongsim or another TBD café."], ["Flexible", "JRF race-pack collection", "🏷️ Race prep", "Can be moved to Oct 22 depending on official collection schedule."], ["PM", "Race kit + recovery", "🧘🏻‍♀️ Prep", "Lay out outfit, bib, shoes, gels, hydration and documents; feet up."]], "2026-10-24": [["04:30", "JRF HALF MARATHON", "🏃🏻‍♀️ RACE", "GBK Senayan · Half Marathon. Race entry Rp1,500,000 personal."], ["AM", "Post-race breakfast / recovery", "🍜 Recovery", "Protein + carbs + fluids. Don't force sightseeing immediately."], ["PM", "Café hopping", "☕ Explore", "Easy, mostly seated café hopping; skip a packed walking itinerary."]], "2026-10-25": [["AM", "Church", "⛪ Personal", "Morning church."], ["LATE AM–PM", "Foodie / place exploration", "🍜 Explore", "Choose low-effort Jakarta spots; make this a relaxed recovery day."], ["EVENING", "Pack for Manado", "🧳 Prep", "Check passport, baggage and GA flight details."]], "2026-10-26": [["07:00", "Hotel → CGK", "🚕 Transport", "Grab to CGK T3; target arrival around 07:00–07:15."], ["09:20", "GA0600 CGK → MDC", "✈️ Flight", "Arrive 13:45 · 20kg checked baggage."], ["PM", "Airport → home", "🚗 Transport", "Rental; round-trip estimate Rp400,000."]], "2026-10-27": [["FLEX", "Manado / family", "🏡 Hometown", "Plans intentionally blank for now."], ["FLEX", "Tinutuan / local food", "🍜 Food", "Must-eat list includes tinutuan, pisang goroho goreng and bakso solo."]], "2026-10-28": [["FLEX", "Manado / family", "🏡 Hometown", "Open day."], ["FLEX", "Optional hometown run", "🏃 Running", "Easy run if it fits how you feel after JRF."]], "2026-10-29": [["FLEX", "Manado / family", "🏡 Hometown", "Open day."], ["FLEX", "Kawasan / local exploring", "🌿 Explore", "Exact Kawasan plan TBD."]], "2026-10-30": [["FLEX", "Manado / family", "🏡 Hometown", "Open day."], ["FLEX", "Optional massage", "💆🏻‍♀️ Self-care", "Personal treat if desired."]], "2026-10-31": [["FLEX", "Final Manado day", "🏡 Hometown", "Oleh-oleh + pack for Bandung."], ["EVENING", "Pack", "🧳 Prep", "Prepare for 14:45 flight tomorrow."]], "2026-11-01": [["14:45", "GA0601 MDC → CGK", "✈️ Flight", "Arrive ~17:05 T3."], ["18:00", "CGK → Bandung", "🚐 Transport", "Cititrans preferred; target departure around 18:00."], ["NIGHT", "Arrive Pasteur", "🏙️ Bandung", "Travel to Airbnb; dinner TBD."], ["NIGHT", "Check in Bandung Airbnb", "🏡 Stay", "The Jarrdin/Ciwalk area · Nov 1–11."]], "2026-11-02": [["AM", "Runna training", "🏃 Running", "Training run for Bormar; exact Runna workout can be inserted when you send the schedule."], ["PM", "Deli Bakes", "☕ Food", "Must-visit."], ["EVENING", "Bandung easy date night", "💕 Couple", "Keep it relaxed after the travel day."]], "2026-11-03": [["AM", "Runna training", "🏃 Running", "Follow Runna plan; city route TBD."], ["PM", "Nail art", "💅 Self-care", "Second nail-art session."], ["EVENING", "Aesthetic / viral café", "☕ Couple", "Exact place TBD."]], "2026-11-04": [["AM", "Runna training", "🏃 Running", "Tempo/interval only if this matches your Runna schedule and recovery."], ["PM", "Wangi Seruni", "🌿 Explore", "Must-visit."], ["EVENING", "Susu murni", "🥛 Food", "Flexible stop."]], "2026-11-05": [["AM", "Easy / recovery run", "🏃 Running", "Only if scheduled."], ["PM", "Cinema", "🎬 Fun", "Watch a movie together."], ["EVENING", "Theos Wife / Louis", "🍜 Food", "Exact place/name to confirm later."]], "2026-11-06": [["AM", "Runna training", "🏃 Running", "Follow plan."], ["PM", "Paskal", "🛍️ Explore", "Food/shopping/date time."], ["EVENING", "Coffee / matcha shop", "☕ Café", "Exact shop TBD."]], "2026-11-07": [["AM", "Recovery / free morning", "🧘 Recovery", "Keep the morning easy."], ["EVENING", "Night ride to Lembang", "🏍️ Adventure", "Relaxed ride; dinner / susu murni / café stop."]], "2026-11-08": [["AM", "Runna training / long run", "🏃 Running", "Use this slot for the key Bormar workout if your Runna plan places it here."], ["PM", "Aesthetic / viral Bandung spots", "📸 Explore", "Exact places TBD."]], "2026-11-09": [["AM", "Runna training", "🏃 Running", "Last meaningful training block before taper."], ["PM", "Food / café date", "💕 Couple", "Low-key."]], "2026-11-10": [["AM", "Easy / taper", "🏃 Running", "No hard work; prioritize sleep and recovery."], ["PM", "Pack for Jogja", "🧳 Prep", "Race kit, running shoes, gels, documents."]], "2026-11-11": [["08:00–09:00", "Check out Bandung", "🏡 Stay", "Leave Airbnb on time."], ["AM", "Bandung → Yogyakarta", "🚌 Transport", "Preferred Cititrans bus; train is backup if baggage/comfort makes it better."], ["PM", "Arrive Jogja + check in", "🏨 Stay", "Huma Yogyakarta Hostel · booked · shared expense · Rp2,186,330 total for 5 nights."], ["EVENING", "Dinner + little explore", "🌙 Explore", "Short nearby walk/café only."]], "2026-11-12": [["AM", "Easy Run", "🏃 Running", "Suggested: 30–40 min very easy, conversational. No speed."], ["LATE AM", "Kraton Yogyakarta", "🏛️ Culture", "Classic city stop; pair with Taman Sari."], ["NOON", "Taman Sari", "📸 Explore", "Short cultural/photo stop."], ["PM", "Café / lunch", "☕ Food", "Choose a nearby aesthetic café."], ["EVENING", "Malioboro", "🌙 Explore", "Light stroll + shopping/oleh-oleh."]], "2026-11-13": [["EARLY AM", "Prambanan Temple", "🏛️ Culture", "Go early to avoid heat; major Jogja must-see."], ["LATE AM", "Ratu Boko", "📸 Explore", "Optional if energy is good; otherwise skip to protect race freshness."], ["PM", "Return + lunch", "🍜 Food", "Eat and rest."], ["EVENING", "Race-week reset", "🧘 Recovery", "Feet up, hydrate, early dinner."]], "2026-11-14": [["AM", "Bormar race-pack collection", "🏷️ Race prep", "Venue/opening hours TBA; use rental motorbike."], ["PM", "Race kit preparation", "🎒 Prep", "Bib, outfit, shoes, gels, hydration, documents."], ["EVENING", "Rest", "🛌 Recovery", "No run; early night."]], "2026-11-15": [["TBA", "BOROBUDUR MARATHON HALF MARATHON", "🏃🏻‍♀️ RACE", "Race start TBA. Hotel → race venue by rental motorbike."], ["POST-RACE", "Recovery meal", "🍜 Recovery", "Carbs + protein + fluids; keep food familiar."], ["PM", "Hotel + optional slow walk", "🛌 Recovery", "Rest first; only do a short oleh-oleh walk if you genuinely feel okay."]], "2026-11-16": [["12:00", "Check out Huma Yogyakarta Hostel", "🏨 Stay", "Checkout at 12 PM after your 5-night stay."], ["12:00–14:00", "Lunch + final Jogja stop", "🍜 Explore", "Keep it near the hotel/route to YIA."], ["15:00", "Grab to YIA", "🚕 Transport", "Allow generous road buffer."], ["17:45", "YIA → CGK · 8B5533", "✈️ Flight", "Arrive 18:55 · Rp889,000/person · paid."], ["EVENING", "CGK Terminal 3", "🛍️ Airport", "Dinner + souvenir shopping + wait for 01:45 flight."]], "2026-11-17": [["01:45", "CGK → PEK · CA978", "✈️ Flight", "Arrive 09:55."], ["DAY", "Beijing transfer", "✈️ Transit", "7h15 transfer; food, documents and airport shopping."], ["17:10", "PEK → HND · CA183", "✈️ Flight", "Arrive 21:30 HND T3."], ["NIGHT", "Arrive Tokyo", "🏠 Home", "Trip complete."]]};
